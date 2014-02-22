@@ -1,5 +1,5 @@
 <?php
-
+session_start();
 class application {
 
 	public static $lang;
@@ -19,15 +19,17 @@ class application {
 	}
 
 	public function boostrap($controller) {
-
 		$this -> baseController = new baseController($controller);
 		$this -> baseModel = new baseModel;
-		
 	}
 	
 	public function showtemplate($template, $data = null){
 		$this -> template = new template('lib/templates');
 		$this -> template -> show($template, $data , $lang = self::$lang);
+	}
+	
+	public function loadAddon($name){
+		include ('lib/addons/' . $name . '/index.php' );
 	}
 
 	public function console($data) {
@@ -36,6 +38,9 @@ class application {
 		else
 			$output = "<script>console.log( 'Debug Objects: " . $data . "' );</script>";
 		echo $output;
+	}
+	public static function showError($msg){
+		die ($msg);
 	}
 
 }
