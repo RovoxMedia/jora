@@ -1,5 +1,9 @@
+<html>
 <?php
-
-echo "hello world!";
-
+	include_once('/core/application.php');
+	$app = new application;
 ?>
+</html>
+
+
+
