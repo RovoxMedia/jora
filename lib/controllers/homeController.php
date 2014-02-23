@@ -10,7 +10,8 @@ class homeController extends baseController {
 		application::showtemplate('home.php', $data);
 		application::loadAddon('session');
 		session::createSession('test', 'hoi');
-		echo session::readSession();
+		echo session::readSession('test');
 		session::distroySession('test');
+		
 	}
 }

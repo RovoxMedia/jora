@@ -7,9 +7,12 @@ class session extends application{
 	}
 	public static function readSession($name = null){	
 		if(!$name == null){
-			return $_SESSION[$name];
+			if(isset($_SESSION[$name])){
+				return $_SESSION[$name];
+			}
+			application::showError("Fatal error: Session name does not exits");
 		}else{
-			application::showError("<h3><b style='color:red;'>Fatal error: No name for the session is given</b><h3>");
+			application::showError("Fatal error: No name for the session is given");
 		}
 			
 	

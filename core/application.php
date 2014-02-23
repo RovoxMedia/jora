@@ -7,7 +7,7 @@ class application {
 	public function __construct() {
 		include_once ('core/controllers/baseController.php');
 		include_once ('core/models/baseModel.php');
-		include_once ('lib/addons/templateEngine/template.php');
+		include_once ('core/addons/templateEngine/template.php');
 		$this -> config = parse_ini_file("config.ini", 1);
 		$this -> settingGeneral = $this -> config['general'];
 		$this -> getlang($this -> settingGeneral['lang']);
@@ -40,7 +40,16 @@ class application {
 		echo $output;
 	}
 	public static function showError($msg){
+		echo "<div style='color:red; float:left; background-color:white; margin:10px; padding:10px;'>there was a error see below for more details:<h3><b>";
 		die ($msg);
+		echo "<b></h3></div>";
 	}
+	public static function coreAddons($name){
+		include"core/addons/$name/index.php";
+	}
+	
+	public static function showview($name){
+		include("/views/$name.php");
+	} 
 
 }
