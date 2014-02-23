@@ -12,6 +12,9 @@ class homeController extends baseController {
 		session::createSession('test', 'hoi');
 		echo session::readSession('test');
 		session::distroySession('test');
+		application::loadAddon('encrypt');
+		echo encrypt::encryptData('hoi','hoi');
+		
 		
 	}
 }

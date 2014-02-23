@@ -19,8 +19,8 @@ class application {
 	}
 
 	public function boostrap($controller) {
-		$this -> baseController = new baseController($controller);
-		$this -> baseModel = new baseModel;
+		$this->baseController = new baseController($controller);
+		$this->baseModel = new baseModel;
 	}
 	
 	public function showtemplate($template, $data = null){
