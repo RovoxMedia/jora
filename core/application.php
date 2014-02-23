@@ -10,16 +10,18 @@ class application {
 		include_once ('core/addons/templateEngine/template.php');
 		$this -> config = parse_ini_file("config.ini", 1);
 		$this -> settingGeneral = $this -> config['general'];
+        $this -> database = $this -> config['database'];
 		$this -> getlang($this -> settingGeneral['lang']);
-		$this -> boostrap($contoller = $this -> settingGeneral);
+		$this -> boostrap($contoller = $this -> settingGeneral, $database = $this -> database);
+
 	}
 
 	public function getlang($lang) {
 		include_once ('lib/lang/' . $lang . '.php');
 	}
 
-	public function boostrap($controller) {
-		$this->baseController = new baseController($controller);
+	public function boostrap($controller, $database) {
+		$this->baseController = new baseController($controller,$database);
 		$this->baseModel = new baseModel;
 	}
 	
@@ -40,9 +42,9 @@ class application {
 		echo $output;
 	}
 	public static function showError($msg){
-		echo "<div style='color:red; float:left; background-color:white; margin:10px; padding:10px;'>there was a error see below for more details:<h3><b>";
+		echo "<div class='podbar' style='bottom:0;position:fixed;z-index:150;width: 100%;margin-left: -8px;padding-left: 10px;_position:absolute;_top:expression(eval(document.documentElement.scrollTop+(document.documentElement.clientHeight-this.offsetHeight)));height:35px;background-color: #00a9ff;'>There was a error: <b>";
 		die ($msg);
-		echo "<b></h3></div>";
+		echo "<b></div>";
 	}
 	public static function coreAddons($name){
 		include"core/addons/$name/index.php";

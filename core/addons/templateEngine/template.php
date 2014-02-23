@@ -26,6 +26,7 @@ class template extends application {
 		foreach ($lang as $key => $value) {
 			$template = str_replace('{' . $key . '}', $value, $template);
 		}
+            $template = str_replace('{url}', 'lib/templates', $template);
 
 		return $template;
 	}

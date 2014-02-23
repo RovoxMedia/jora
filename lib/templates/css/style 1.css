@@ -1,0 +1,21 @@
+.container{
+    margin: 15% 15% 15% 15%;
+    padding: 10%;
+    text-align: center;
+    border-style:solid;
+    border-width:5px;
+    border-color: #00a9ff;
+}
+.podbar {
+    bottom:0;
+    position:fixed;
+    z-index:150;
+    width: 100%;
+    margin-left: -8px;
+    padding: 0;
+    _position:absolute;
+    _top:expression(eval(document.documentElement.scrollTop+
+        (document.documentElement.clientHeight-this.offsetHeight)));
+    height:35px;
+    background-color: #00a9ff;
+}

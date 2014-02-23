@@ -4,17 +4,12 @@
  * the home controller
  */
 class homeController extends baseController {
-	
-	function __construct() {
+	function __construct($database) {
+        application::loadAddon('pagespeed');
+        pagespeed::startLoading();
 		$data = array('content' => 'Dashboard!', 'title' => 'Jora');
 		application::showtemplate('home.php', $data);
-		application::loadAddon('session');
-		session::createSession('test', 'hoi');
-		echo session::readSession('test');
-		session::distroySession('test');
-		application::loadAddon('encrypt');
-		echo encrypt::encryptData('hoi','hoi');
-		
-		
+        echo pagespeed::getTime();
+        application::loadAddon('auth');
 	}
 }

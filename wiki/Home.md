@@ -16,3 +16,6 @@ application::loadAddon('encrypt');
     email::setMessage();
     email::setSubject();
     email::sendEmail();
+
+###encrypt:
+    encrypt::encryptData('data');
